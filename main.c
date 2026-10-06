@@ -65,6 +65,33 @@ bool validateWin(int board[6][7], int r, int c) {
     return false;
 }
 
+void display_board(char Board[6][7], char player)
+{
+    // board title
+    printf("\n");
+    printf("=================================\n");
+    printf("           CONNECT 4\n");
+    printf("=================================\n\n");
+
+    // board colomn
+    printf("    1   2   3   4   5   6   7\n");
+    printf("  +---+---+---+---+---+---+---+\n");
+
+    // board 
+    for (int i = 0; i < 6; i++)
+    {
+        for (int j = 0; j < 7; j++)
+        {
+            printf("  | %c ", Board[i][j]);
+        }
+
+        printf("|\n");
+        printf("  +---+---+---+---+---+---+---+\n");
+    }
+    // show current player turn
+    printf("\nPlayer %c's turn.\n", player);
+}
+
 int main(void) {
     struct Player player_active;
     struct Player players[2];
