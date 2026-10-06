@@ -26,6 +26,19 @@ void validateWin(int board[6][7], int r, int c){
     } else {
         printf("False \n"); 
     }
+    i = c;
+    while (i > c - 4){
+        printf("%d \n", board[r][i]); 
+        if (i < 0 || board[r][c] != board[r][i]){
+            break; 
+        }
+        i--; 
+    }
+    if (i == c - 4){
+        printf("True \n"); 
+    } else {
+        printf("False \n"); 
+    }
 
 }
 
@@ -40,7 +53,7 @@ int main(void) {
         {0, 0, 0, 0, 0, 0, 0},  
     };
 
-    validateWin(board, 4, 1);
+    validateWin(board, 2, 5);
 
     return 0;
 }
