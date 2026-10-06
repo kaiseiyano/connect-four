@@ -2,10 +2,11 @@
 #define PLAYER_H
 
 struct Player {
-    int id;
+  int id;
 };
 
 void init_players(struct Player *players);
-struct Player get_other_player(struct Player *players, struct Player player_active);
+struct Player get_other_player(struct Player *players,
+                               struct Player player_active);
 
 #endif
