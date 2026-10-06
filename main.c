@@ -1,11 +1,6 @@
 #include <stdio.h>
-#include <stdbool.h> 
+#include <stdbool.h>
 
-int main(void) {
-    printf("Hello world!");
-
-    return 0;
-}
 
 /* 
     Logic to validate the win (four in a row)
@@ -13,9 +8,40 @@ int main(void) {
     Before each check, validate that the end coordinates are within the range of the board   
     Returns false if no conditions are met 
 */
-bool validateWin(int board[6][7], int x, int y){
+void validateWin(int board[6][7], int r, int c){
     int width = 7; 
     int height = 6; 
 
-    return false; 
+    // Check horizontally 
+    int i = c;
+    while (i < c + 4){
+        printf("%d \n", board[r][i]); 
+        if (i == width || board[r][c] != board[r][i]){
+            break; 
+        }
+        i++; 
+    }
+    if (i == c + 4){
+        printf("True \n"); 
+    } else {
+        printf("False \n"); 
+    }
+
 }
+
+int main(void) {
+
+    int board[6][7] = {
+        {1, 1, 1, 1, 1, 0, 1},  
+        {0, 0, 0, 0, 0, 0, 0}, 
+        {0, 0, 1, 1, 1, 1, 0}, 
+        {0, 0, 0, 0, 0, 0, 0}, 
+        {0, 1, 1, 1, 0, 0, 0}, 
+        {0, 0, 0, 0, 0, 0, 0},  
+    };
+
+    validateWin(board, 4, 1);
+
+    return 0;
+}
+
