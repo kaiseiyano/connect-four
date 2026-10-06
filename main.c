@@ -8,80 +8,63 @@
     Before each check, validate that the end coordinates are within the range of the board   
     Returns false if no conditions are met 
 */
-void validateWin(int board[6][7], int r, int c){
+bool validateWin(int board[6][7], int r, int c) {
     int width = 7; 
     int height = 6; 
 
-    // Check horizontally 
+    // Check right horizontally 
     int i = c;
     while (i < c + 4){
-        printf("%d \n", board[r][i]); 
         if (i == width || board[r][c] != board[r][i]){
             break; 
         }
         i++; 
     }
     if (i == c + 4){
-        printf("True \n"); 
-    } else {
-        printf("False \n"); 
-    }
+        return true; 
+    } 
+
+    // Check left horizontally 
     i = c;
     while (i > c - 4){
-        printf("%d \n", board[r][i]); 
         if (i < 0 || board[r][c] != board[r][i]){
             break; 
         }
         i--; 
     }
     if (i == c - 4){
-        printf("True \n"); 
-    } else {
-        printf("False \n"); 
+        return true; 
     }
 
-    // Check vertically 
+    // Check vertically upwards
     i = r;
     while (i > r - 4){
-        printf("%d \n", board[i][c]); 
         if (i == height || board[r][c] != board[i][c]){
             break; 
         }
         i--; 
     }
     if (i == r - 4){
-        printf("True \n"); 
-    } else {
-        printf("False \n"); 
+        return true; 
     }
+
+    // Check vertically downwards
     i = r;
     while (i < r + 4){
-        printf("%d \n", board[i][c]); 
         if (i == height || board[r][c] != board[i][c]){
             break; 
         }
         i++; 
     }
     if (i == r + 4){
-        printf("True \n"); 
-    } else {
-        printf("False \n"); 
+        return true; 
     }
+
+    return false;
 }
 
 int main(void) {
-
-    int board[6][7] = {
-        {1, 1, 1, 1, 1, 0, 1},  
-        {0, 0, 0, 0, 0, 0, 0}, 
-        {0, 0, 1, 1, 1, 1, 1}, 
-        {0, 0, 0, 0, 0, 0, 1}, 
-        {0, 1, 1, 1, 0, 0, 1}, 
-        {0, 0, 0, 0, 0, 0, 1},  
-    };
-
-    validateWin(board, 2, 6);
-
+    printf("Hello World"); 
     return 0;
 }
 
