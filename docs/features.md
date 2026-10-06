@@ -1,0 +1,5 @@
+- get and validate input
+- display the board
+- updating the board
+- check for win condition
+- alternating player logic
