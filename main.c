@@ -2,13 +2,27 @@
 
 #define ROWS 6
 #define COLS 7
-#define EMPTY ' '
+#define EMPTY 0
+#define PIECE_x 1
+#define PIECE_o 2
 
-char board[ROWS][COLS];
+int board[ROWS][COLS];
+int height [COLS];
+
+char symbol (int piece){
+    if (piece == PIECE_x) {
+        return 'X';
+    } else if (piece == PIECE_o) {
+        return 'O';
+    } else {
+        return ' ';
+    }
+}
 
 void initial(void) {
-    for (int r=0; r<ROWS; r++) {
-        for (int c=0; c<COLS; c++) {
+    for (int c=0; c<COLS; c++) {
+        height[c] = 0;
+        for (int r=0; r<ROWS; r++) {
             board[r][c] = EMPTY;
         }
     }
@@ -27,7 +41,7 @@ void display() {
         printf("\n");
     }
 }
-int update(int x, int y, char piece) {
+int update(int x, int y, int piece) {
     if (x<0 || x>=COLS || y<0 || y>=ROWS) {
         return 0;
     }
