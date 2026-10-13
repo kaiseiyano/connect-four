@@ -10,52 +10,42 @@ bool validateWin(int board[6][7], int r, int c) {
   int width = 7;
   int height = 6;
 
-  // Check right horizontally
-  int i = c;
-  while (i < c + 4) {
-    if (i == width || board[r][c] != board[r][i]) {
-      break;
-    }
-    i++;
-  }
-  if (i == c + 4) {
-    return true;
-  }
+  // Direction vectors
+  int directions[4][2] = {{0, 1}, {1, 0}, {1, 1}, {1, -1}};
 
-  // Check left horizontally
-  i = c;
-  while (i > c - 4) {
-    if (i < 0 || board[r][c] != board[r][i]) {
-      break;
-    }
-    i--;
-  }
-  if (i == c - 4) {
-    return true;
-  }
+  for (int i = 0; i < 4; i++) {
+    int x = directions[i][0];
+    int y = directions[i][1];
+    int count = 1;
 
-  // Check vertically upwards
-  i = r;
-  while (i > r - 4) {
-    if (i == height || board[r][c] != board[i][c]) {
-      break;
+    // Check positive direction
+    for (int j = 1; j < 4; j++) {
+      int dx = x * j + r;
+      int dy = y * j + c;
+      if (dx >= 0 || dx < height || dy >= 0 || dy < width ||
+          board[dx][dy] == board[r][c]) {
+        count++;
+      } else {
+        break;
+      }
     }
-    i--;
-  }
-  if (i == r - 4) {
-    return true;
-  }
 
-  // Check vertically downwards
-  i = r;
-  while (i < r + 4) {
-    if (i == height || board[r][c] != board[i][c]) {
-      break;
+    // Check negative direction
+    count = 1;
+    for (int k = 1; k < 4; k++) {
+      int dx = r - x * k;
+      int dy = c - y * k;
+      if (dx >= 0 || dx < height || dy >= 0 || dy < width ||
+          board[dx][dy] == board[r][c]) {
+        count++;
+      } else {
+        break;
+      }
     }
-    i++;
-  }
-  if (i == r + 4) {
-    return true;
+
+    if (count >= 4) {
+      return true;
+    }
   }
 
   return false;

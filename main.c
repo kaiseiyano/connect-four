@@ -132,5 +132,17 @@ int main(void) {
     player_active = get_other_player(players, player_active);
   }
 
+  int board[6][7] = {
+    {1, 0, 0, 0, 0, 0, 0}, 
+    {0, 1, 0, 0, 0, 0, 0}, 
+    {0, 0, 1, 0, 0, 0, 0}, 
+    {0, 0, 0, 1, 0, 0, 0}, 
+    {0, 0, 0, 0, 0, 0, 0}, 
+    {0, 0, 0, 0, 0, 0, 0}, 
+  };
+
+  bool res = validateWin(board, 0, 0); 
+  printf("%s\n", res ? "true" : "false");  
+
   return 0;
 }
