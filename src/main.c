@@ -57,7 +57,7 @@ int main(void) {
     display(&board);
 
     // Check win logic
-    int res = validateWin(&board, col);
+    int res = validate_win(&board, col);
     if (res == 1) {
       printf("The winner is %d! Four in a row!", player_active.id);
       break;
