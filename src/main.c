@@ -42,26 +42,21 @@ int main(void) {
   struct Board board;
   init_players(players);
   player_active = players[0];
-  initial(&board);
+  init(&board);
+  display(&board);
 
   while (true) {
     printf("Player %d's turn\n", player_active.id);
 
-    // Enter in coordinates
+    // TODO: Take in input
     int r;
     int c;
     scanf("%d", &r);
     scanf("%d", &c);
 
-    // Update board
-
-    // Display board
-    for (int i = 0; i < 6; i++) {
-      for (int j = 0; j < 7; j++) {
-        printf("%d", board.cells[i][j]);
-      }
-      printf("\n");
-    }
+    // Update board and display
+    update(&board, r, c, player_active.id);
+    display(&board);
 
     // Check win logic
     bool res = validateWin(board.cells, r, c);
