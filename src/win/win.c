@@ -8,9 +8,7 @@
    it is the same as the starting point then count is incremented. If count >= 4
    then it means that the game has been won.
 */
-bool validateWin(int board[6][7], int r, int c) {
-  int width = 7;
-  int height = 6;
+bool validateWin(int board[ROWS][COLS], int r, int c) {
 
   // Guard against 0 value
   if (board[r][c] == 0) {
@@ -29,7 +27,7 @@ bool validateWin(int board[6][7], int r, int c) {
     for (int j = 1; j < 4; j++) {
       int dx = x * j + r;
       int dy = y * j + c;
-      if (dx >= 0 && dx < height && dy >= 0 && dy < width &&
+      if (dx >= 0 && dx < ROWS && dy >= 0 && dy < COLS &&
           board[dx][dy] == board[r][c]) {
         count++;
       } else {
@@ -41,7 +39,7 @@ bool validateWin(int board[6][7], int r, int c) {
     for (int k = 1; k < 4; k++) {
       int dx = r - x * k;
       int dy = c - y * k;
-      if (dx >= 0 && dx < height && dy >= 0 && dy < width &&
+      if (dx >= 0 && dx < ROWS && dy >= 0 && dy < COLS &&
           board[dx][dy] == board[r][c]) {
         count++;
       } else {
