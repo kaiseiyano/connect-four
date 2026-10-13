@@ -72,16 +72,23 @@ char _get_symbol(int piece) {
    negative direction. The loops go three places in the vector direction, and if
    it is the same as the starting point then count is incremented. If count >= 4
    then it means that the game has been won.
+   1: Game won
+   0: Game continues
 */
-bool validateWin(const struct Board *board, int c) {
+int validateWin(const struct Board *board, int c) {
 
   // Get rows
   int open = get_open_row_from_col(board, c);
-  int r = (open == -1) ? ROWS - 1 : open - 1;
+  int r;
+  if (open == -1) {
+    r = ROWS - 1;
+  } else {
+    r = open - 1;
+  }
 
   // No piece in the cell
   if (board->cells[r][c] == EMPTY) {
-    return false;
+    return 0;
   }
 
   // Direction vectors
@@ -117,9 +124,9 @@ bool validateWin(const struct Board *board, int c) {
     }
 
     if (count >= 4) {
-      return true;
+      return 1;
     }
   }
 
-  return false;
+  return 0;
 }
