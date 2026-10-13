@@ -1,9 +1,9 @@
 CC = cc
 CFLAGS = -Wall -Wextra
 
-# picks up main.c plus every feature folder (player/, board/, ...) automatically
-SRCS = main.c $(wildcard */*.c)
-HDRS = $(wildcard */*.h)
+# picks up src/main.c plus every feature folder (src/player/, src/board/, ...) automatically
+SRCS = $(wildcard src/*.c src/*/*.c)
+HDRS = $(wildcard src/*/*.h)
 TARGET = connect-four
 
 $(TARGET): $(SRCS) $(HDRS)
