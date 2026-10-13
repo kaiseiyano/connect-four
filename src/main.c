@@ -55,7 +55,7 @@ int main(void) {
     int row = get_open_row_from_col(&board, col); 
 
     // Update board and display
-    update(&board, col, row, player_active.id + 1);
+    update(&board, col, player_active.id + 1);
     display(&board);
 
     // Check win logic
