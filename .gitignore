@@ -1,3 +1,6 @@
 # binary files
 *.out
 connect-four
+
+# macos
+.DS_Store
