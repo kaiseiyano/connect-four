@@ -1,6 +1,5 @@
 #include "board/board.h"
 #include "player/player.h"
-#include "win/win.h"
 #include <stdbool.h>
 #include <stdio.h>
 
@@ -52,14 +51,13 @@ int main(void) {
 
     // Take in input
     int col = get_input_col(&board); 
-    int row = get_open_row_from_col(&board, col); 
 
     // Update board and display
     update(&board, col, player_active.id + 1);
     display(&board);
 
     // Check win logic
-    bool res = validateWin(&board, row, col);
+    bool res = validateWin(&board, col);
     if (res) {
       printf("The winner is %d! Four in a row!", player_active.id);
       break;
