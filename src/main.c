@@ -47,7 +47,7 @@ int main(void) {
   display(&board);
 
   while (true) {
-    printf("Player %d's turn\n", player_active.id);
+    printf("Player %d's turn\n", player_active.id + 1);
 
     // Take in input
     int col = get_input_col(&board); 
@@ -59,7 +59,7 @@ int main(void) {
     // Check win logic
     int res = validate_win(&board, col);
     if (res == 1) {
-      printf("The winner is %d! Four in a row!", player_active.id);
+      printf("The winner is %d! Four in a row!", player_active.id + 1);
       break;
     }
 
