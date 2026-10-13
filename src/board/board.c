@@ -11,11 +11,10 @@ char symbol (int piece){
     }
 }
 
-void initial(struct Board *board) {
-    for (int c=0; c<COLS; c++) {
-        board->height[c] = 0;
-        for (int r=0; r<ROWS; r++) {
-            board->cells[r][c] = EMPTY;
+void init(struct Board *board) {
+    for (int r = 0; r < ROWS; r++) {
+        for (int c = 0; c < COLS; c++) {
+            (*board).cells[r][c] = EMPTY;
         }
     }
 }
