@@ -11,18 +11,26 @@ void init(struct Board *board) {
 
 void display(const struct Board *board) {
   printf("\n");
-
   for (int r = ROWS - 1; r >= 0; r--) {
+    printf("|");
     for (int c = 0; c < COLS; c++) {
-      if (board->cells[r][c] == EMPTY) {
-        printf("□ ");
-      } else {
-        printf("%c ", _get_symbol(board->cells[r][c]));
-      }
+      printf(" %c |", _get_symbol(board->cells[r][c]));
     }
-
     printf("\n");
   }
+
+  // Border
+  printf("+");
+  for (int c = 0; c < COLS; c++) {
+    printf("---+");
+  }
+  printf("\n ");
+
+  // Numbered columns
+  for (int c = 0; c < COLS; c++) {
+    printf(" %d  ", c + 1);
+  }
+  printf("\n");
 }
 
 int update(struct Board *board, int col, int piece) {
