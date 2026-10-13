@@ -14,6 +14,9 @@ struct Board {
 void init(struct Board *board);
 void display(const struct Board *board);
 int update(struct Board *board, int x, int y, int piece);
+int get_open_row_from_col(struct Board *board, int col);
+int is_valid_row(struct Board *board, int row);
+int is_valid_col(struct Board *board, int col);
 
 char _get_symbol(int piece);
 
