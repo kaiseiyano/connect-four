@@ -17,7 +17,8 @@ int update(struct Board *board, int col, int piece);
 int get_open_row_from_col(const struct Board *board, int col);
 int is_valid_row(int row);
 int is_valid_col(int col);
-int validateWin(const struct Board *board, int c);
+int validate_win(const struct Board *board, int c);
 char _get_symbol(int piece);
+int is_full(struct Board *board);
 
 #endif

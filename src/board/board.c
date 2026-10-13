@@ -59,7 +59,7 @@ int get_open_row_from_col(const struct Board *board, int col) {
   return -1;
 }
 
-int is_valid_row(int row) { return row >=0 && row < ROWS; }
+int is_valid_row(int row) { return row >= 0 && row < ROWS; }
 
 int is_valid_col(int col) { return col >= 0 && col < COLS; }
 
@@ -83,7 +83,7 @@ char _get_symbol(int piece) {
    1: Game won
    0: Game continues
 */
-int validateWin(const struct Board *board, int c) {
+int validate_win(const struct Board *board, int c) {
 
   // Get rows
   int open = get_open_row_from_col(board, c);
@@ -137,4 +137,15 @@ int validateWin(const struct Board *board, int c) {
   }
 
   return 0;
+}
+
+int is_full(struct Board *board) {
+  for (int r = ROWS - 1; r >= 0; r--) {
+    for (int c = 0; c < COLS; c++) {
+      if ((*board).cells[r][c] == EMPTY) {
+        return 0;
+      }
+    }
+  }
+  return 1;
 }

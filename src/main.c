@@ -46,7 +46,7 @@ int main(void) {
   init(&board);
   display(&board);
 
-  while (true) {
+  while (is_full(&board) == 0) {
     printf("Player %d's turn\n", player_active.id);
 
     // Take in input
@@ -57,14 +57,18 @@ int main(void) {
     display(&board);
 
     // Check win logic
-    int res = validateWin(&board, col);
+    int res = validate_win(&board, col);
     if (res == 1) {
-      printf("The winner is %d! Four in a row!", player_active.id);
-      break;
+      printf("The winner is %d! Four in a row! \n", player_active.id);
+      return 0; 
     }
 
     // Switch player
     player_active = get_other_player(players, player_active);
+  }
+
+  if (is_full(&board) == 1){
+    printf("Draw! No more pieces to place\n");
   }
 
   return 0;
