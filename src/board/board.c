@@ -83,7 +83,7 @@ char _get_symbol(int piece) {
    1: Game won
    0: Game continues
 */
-int validateWin(const struct Board *board, int c) {
+int validate_win(const struct Board *board, int c) {
 
   // Get rows
   int open = get_open_row_from_col(board, c);
