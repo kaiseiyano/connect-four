@@ -10,6 +10,11 @@ bool validateWin(int board[6][7], int r, int c) {
   int width = 7;
   int height = 6;
 
+  // Guard against 0 value
+  if (board[r][c] == 0) {
+    return false;
+  }
+
   // Direction vectors
   int directions[4][2] = {{0, 1}, {1, 0}, {1, 1}, {1, -1}};
 
