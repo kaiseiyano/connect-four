@@ -2,9 +2,11 @@
 
 /*
     Logic to validate the win (four in a row)
-    Take in the x and y coordinates as input, as well as board as a 2D array.
-    Before each check, validate that the end coordinates are within the range of
-   the board Returns false if no conditions are met
+    A 2D array is used to store the direction vectors. A loop runs through the
+   array, and within that there are another two loops for the positive and
+   negative direction. The loops go three places in the vector direction, and if
+   it is the same as the starting point then count is incremented. If count >= 4
+   then it means that the game has been won.
 */
 bool validateWin(int board[6][7], int r, int c) {
   int width = 7;
@@ -27,7 +29,7 @@ bool validateWin(int board[6][7], int r, int c) {
     for (int j = 1; j < 4; j++) {
       int dx = x * j + r;
       int dy = y * j + c;
-      if (dx >= 0 || dx < height || dy >= 0 || dy < width ||
+      if (dx >= 0 && dx < height && dy >= 0 && dy < width &&
           board[dx][dy] == board[r][c]) {
         count++;
       } else {
@@ -36,11 +38,10 @@ bool validateWin(int board[6][7], int r, int c) {
     }
 
     // Check negative direction
-    count = 1;
     for (int k = 1; k < 4; k++) {
       int dx = r - x * k;
       int dy = c - y * k;
-      if (dx >= 0 || dx < height || dy >= 0 || dy < width ||
+      if (dx >= 0 && dx < height && dy >= 0 && dy < width &&
           board[dx][dy] == board[r][c]) {
         count++;
       } else {
