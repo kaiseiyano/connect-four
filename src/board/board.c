@@ -26,7 +26,7 @@ void display(const struct Board *board) {
 }
 
 int update(struct Board *board, int col, int piece) {
-  if (!is_valid_col(board, col)) {
+  if (!is_valid_col(col)) {
     return 0;
   }
 
@@ -51,9 +51,9 @@ int get_open_row_from_col(const struct Board *board, int col) {
   return -1;
 }
 
-int is_valid_row(struct Board *board, int row) { return row < ROWS; }
+int is_valid_row(int row) { return row >=0 && row < ROWS; }
 
-int is_valid_col(struct Board *board, int col) { return col < COLS; }
+int is_valid_col(int col) { return col >= 0 && col < COLS; }
 
 char _get_symbol(int piece) {
   if (piece == PIECE_x) {
