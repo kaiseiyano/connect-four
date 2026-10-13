@@ -62,7 +62,7 @@ int main(void) {
     display(&board);
 
     // Check win logic
-    bool res = validateWin(board.cells, r, c);
+    bool res = validateWin(&board, r, c);
     if (res) {
       printf("The winner is %d! Four in a row!", player_active.id);
       break;

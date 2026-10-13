@@ -8,10 +8,10 @@
    it is the same as the starting point then count is incremented. If count >= 4
    then it means that the game has been won.
 */
-bool validateWin(int board[ROWS][COLS], int r, int c) {
+bool validateWin(const struct Board *board, int r, int c) {
 
-  // Guard against 0 value
-  if (board[r][c] == 0) {
+  // No piece in the cell
+  if (board->cells[r][c] == EMPTY) {
     return false;
   }
 
@@ -28,7 +28,7 @@ bool validateWin(int board[ROWS][COLS], int r, int c) {
       int dx = x * j + r;
       int dy = y * j + c;
       if (dx >= 0 && dx < ROWS && dy >= 0 && dy < COLS &&
-          board[dx][dy] == board[r][c]) {
+          board->cells[dx][dy] == board->cells[r][c]) {
         count++;
       } else {
         break;
@@ -40,7 +40,7 @@ bool validateWin(int board[ROWS][COLS], int r, int c) {
       int dx = r - x * k;
       int dy = c - y * k;
       if (dx >= 0 && dx < ROWS && dy >= 0 && dy < COLS &&
-          board[dx][dy] == board[r][c]) {
+          board->cells[dx][dy] == board->cells[r][c]) {
         count++;
       } else {
         break;

@@ -4,6 +4,6 @@
 #include "../board/board.h"
 #include <stdbool.h>
 
-bool validateWin(int board[ROWS][COLS], int r, int c);
+bool validateWin(const struct Board *board, int r, int c);
 
 #endif
