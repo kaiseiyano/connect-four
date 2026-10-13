@@ -25,20 +25,18 @@ void display(const struct Board *board) {
     }
 }
 
-int update(struct Board *board, int x, int y, int piece) {
-    if (x < 0 || x >= COLS || y < 0 || y >= ROWS) {
+int update(struct Board *board, int col, int piece) {
+    if (!is_valid_col(board, col)) {
         return 0;
     }
 
-    if (board->cells[y][x] != EMPTY) {
+    int row = get_open_row_from_col(board, col);
+
+    if (row == -1) {
         return 0;
     }
 
-    if (y>0 && board->cells[y-1][x] == EMPTY) {
-        return 0;
-    }
-
-    board->cells[y][x] = piece;
+    (*board).cells[row][col] = piece;
 
     return 1;
 }
