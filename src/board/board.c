@@ -43,6 +43,24 @@ int update(struct Board *board, int x, int y, int piece) {
     return 1;
 }
 
+int get_open_row_from_col(struct Board *board, int col) {
+    for (int r = 0; r < ROWS; r++) {
+        if ((*board).cells[r][col] == EMPTY) {
+            return r;
+        }
+    }
+
+    return -1;
+}
+
+int is_valid_row(struct Board *board, int row) {
+    return row < ROWS;
+}
+
+int is_valid_col(struct Board *board, int col) {
+    return col < COLS;
+}
+
 char _get_symbol(int piece){
     if (piece == PIECE_x) {
         return 'X';
