@@ -47,30 +47,3 @@ int update(struct Board *board, int x, int y, int piece) {
     board->cells[y][x] = piece;
     return 1;
 }
-
-void display_board(const struct Board *board, char player)
-{
-    // board title
-    printf("\n");
-    printf("=================================\n");
-    printf("           CONNECT 4\n");
-    printf("=================================\n\n");
-
-    // board colomn
-    printf("    1   2   3   4   5   6   7\n");
-    printf("  +---+---+---+---+---+---+---+\n");
-
-    // board
-    for (int i = ROWS - 1; i >= 0; i--)
-    {
-        for (int j = 0; j < COLS; j++)
-        {
-            printf("  | %c ", symbol(board->cells[i][j]));
-        }
-
-        printf("|\n");
-        printf("  +---+---+---+---+---+---+---+\n");
-    }
-    // show current player turn
-    printf("\nPlayer %c's turn.\n", player);
-}
