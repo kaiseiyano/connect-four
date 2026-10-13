@@ -50,19 +50,16 @@ int main(void) {
   while (true) {
     printf("Player %d's turn\n", player_active.id);
 
-    // TODO: Take in input
-    int test = get_input_col(&board);
-    int r;
-    int c;
-    scanf("%d", &r);
-    scanf("%d", &c);
+    // Take in input
+    int col = get_input_col(&board); 
+    int row = get_open_row_from_col(&board, col); 
 
     // Update board and display
-    update(&board, r, c, player_active.id);
+    update(&board, col, row, player_active.id + 1);
     display(&board);
 
     // Check win logic
-    bool res = validateWin(&board, r, c);
+    bool res = validateWin(&board, row, col);
     if (res) {
       printf("The winner is %d! Four in a row!", player_active.id);
       break;
