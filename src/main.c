@@ -22,7 +22,7 @@ int get_input_col(struct Board *board) {
 
         col -= 1;
 
-        if (!is_valid_col(board, col)) {
+        if (!is_valid_col(col)) {
             printf("> Input int is invalid.\n");
             continue;
         }
