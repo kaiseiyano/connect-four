@@ -2,7 +2,6 @@
 #include <stdbool.h>
 #include <stdio.h>
 
-<<<<<<< HEAD
 #define ROWS 6
 #define COLS 7
 #define EMPTY 0
@@ -57,7 +56,6 @@ int update(int x, int y, int piece) {
     board[y][x] = piece;
     return 1;
 }
-=======
 /*
     Logic to validate the win (four in a row)
     Take in the x and y coordinates as input, as well as board as a 2D array.
@@ -195,4 +193,3 @@ int main(void) {
 
   return 0;
 }
->>>>>>> 40f7102a6472d7b4d1623aad57824ce787919d78
