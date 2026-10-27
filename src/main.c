@@ -50,7 +50,13 @@ int main(void) {
     printf("Player %d's turn\n", player_active.id + 1);
 
     // Take in input
-    int col = get_input_col(&board); 
+    int col = get_input_col(&board);
+
+    if (col == -1) {
+        printf("Input closed. Ending the game.\n");
+
+        return 0;
+    }
 
     // Update board and display
     update(&board, col, player_active.id + 1);
